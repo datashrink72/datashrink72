@@ -1,7 +1,7 @@
 var db = require('../config');
 var mongoose = require('mongoose');
 
-var AnalysesTraitsSchema = mongoose.schema({
+var AnalysesTraitsSchema = mongoose.Schema({
 	id: Number,
 	analyses_id: Number,
 	traits_id: Number,
