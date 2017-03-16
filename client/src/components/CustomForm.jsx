@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as s from '../serverCalls.js'
 
-class LoginForm extends React.Component {
+class CustomForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = { 
-      username: '',
-      password: '',
+      name: '',
+      text: ''
     }
-
     this.updateFormValue = this.updateFormValue.bind(this);
     this.sendForm = this.sendForm.bind(this);
   }
@@ -23,30 +22,29 @@ class LoginForm extends React.Component {
   sendForm(event) {
     event.preventDefault()
     console.log(this.state)
-    s.serverPost('login', this.state).then(e => {
-      //if successful send back message results to app
+    s.serverPost('analyze', this.state)
+    .then(e => {
+      //render the data somewhere
       console.log(e, 'yo');
     }).catch(e => {
       console.log(e);
-      //tell user the info is correct or server is down
+      //tell user they done messed up
     })
   }
 
   render () {
     return (
       <div>
-      <h2>Log In</h2>
+      <h2>Enter your own input to analyze</h2>
       <form onSubmit={this.sendForm}>
         <label>
-          Username:
-          <input type="text" name='username' onChange={this.updateFormValue} defaultValue=''/>
+          Name your input
+          <p></p>
+          <input type="text" name='name' onChange={this.updateFormValue} defaultValue=''/>          
+          <p></p>
         </label>
-        <label>
-          Password:
-          <input type="text" name='password' onChange={this.updateFormValue} defaultValue=''
-          />
-        </label>
-        <input type="submit" defaultValue ='submit' />
+        <textarea rows='30' cols='60' name='text' onChange={this.updateFormValue} defaultValue=''/>
+        <input type="submit" defaultValue ='submit'/>
       </form>
       </div>
     )
@@ -54,6 +52,5 @@ class LoginForm extends React.Component {
 }
 
 
-export default LoginForm
-
+export default CustomForm
 

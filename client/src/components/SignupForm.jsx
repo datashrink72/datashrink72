@@ -24,7 +24,7 @@ class SignUpForm extends React.Component {
   sendForm(event) {
     event.preventDefault()
     console.log(this.state)
-    s.serverPost('login', this.state).then(e => {
+    s.serverPost('signup', this.state).then(e => {
       //if successful send back message results to app
       console.log(e, 'yo');
     }).catch(e => {

@@ -5,7 +5,7 @@ var routes = {
     signup: '/signup',
     facebook: '/facebook',
     twitter: '/twitter',
-    custom: '/analyze'
+    analyze: '/analyze'
 }
 
 const serverPost = (routeName, message) => {
