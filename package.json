@@ -41,6 +41,7 @@
     "passport-twitter": "^1.0.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "twitter": "^1.7.0",
     "watson-developer-cloud": "^2.16.0"
   },
   "homepage": "https://github.com/datashrink72/datashrink72#readme"
