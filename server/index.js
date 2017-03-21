@@ -82,11 +82,10 @@ app.post('/login', function(req, res) {
   dbHelpers.loginUser(req, res);  
 });
 
-app.get('/*', function(req, res) {
-  //take the id included in the star. 
-  //query the database for the information for the respective analysis,
-  //send the display page with the current analysis data
-  res.send('in progress');
+app.get('/analyses/*', function(req, res) {
+  //uncomment when functionality is finalized
+  //dbHelpers.findAllDataFromAnAnalysis(req, res); 
+  res.send('hello world');
 })
 
 app.listen(3000, function() {

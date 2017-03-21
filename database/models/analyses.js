@@ -10,4 +10,6 @@ var AnalysesSchema = mongoose.Schema({
 
 var analysis = mongoose.model('analysis', AnalysesSchema);
 
+
+
 module.exports = analysis;
