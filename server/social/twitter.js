@@ -1,4 +1,4 @@
-var API = require('../API_KEYS.js');
+var API = require('./API_KEYS.js');
 var passport = require('passport');
 var Strategy = require('passport-twitter').Strategy;
 var Twitter = require('twitter');
