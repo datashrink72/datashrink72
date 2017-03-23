@@ -42,6 +42,7 @@ class SignUpForm extends React.Component {
     return (
       <div>
       <h2>Sign Up</h2>
+      <p>this is a heroku test</p>
       <p>{this.state.status}</p>
       <form onSubmit={this.sendForm}>
         <label>
