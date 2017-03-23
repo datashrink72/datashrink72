@@ -1,4 +1,3 @@
-var API = require('./API_KEYS.js');
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
 
