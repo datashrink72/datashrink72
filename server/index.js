@@ -11,6 +11,7 @@ var db = require('../database/config');
 var dbHelpers = require('../database/helpers/request_helpers');
 var path = require('path')
 //-------------------------------------------------------------//
+var secret = require('./secrets');
 
 var app = express();
 
@@ -18,10 +19,10 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.set('view engine', 'ejs');
 
-app.use(cookieParser());
+app.use(cookieParser(secret));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(expressSession({secret: 'keyboard cat', resave: true, saveUnitialized: true}));
+app.use(expressSession({secret: secret, resave: true, saveUnitialized: true}));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -78,14 +79,30 @@ app.get('/analysis/text', function(req, res, next) {
 /****************/
 
 app.post('/signup', function(req, res) {
-  dbHelpers.signup(req, res);
+  if (dbHelpers.checkIfUserIsLoggedin(req.cookies.session)) {
+    res.send('you are already logged in');
+  } else {
+    dbHelpers.signup(req, res);
+  }
 });
 
 app.post('/login', function(req, res) {
-  dbHelpers.loginUser(req, res);  
+  if (dbHelpers.checkIfUserIsLoggedin(req.cookies.session)) {
+    res.send('you are already logged in')
+  } else {
+    dbHelpers.loginUser(req, res);     
+  }
 });
 
-app.get('/analyze/*', function(req, res) {
+app.post('/logout', function(req, res) {
+  dbHelpers.logoutUser(req, res);  
+});
+
+app.get('/logout', function(req, res) {
+  dbHelpers.logoutUser(req, res);  
+});
+
+app.get('/analyses/*', function(req, res) {
   dbHelpers.findAllDataFromAnAnalysis(req, res); 
 });
 

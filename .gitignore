@@ -30,6 +30,9 @@ bower_components/
 server/social/API_KEYS.js
 server/API_KEYS.js
 
+# Secrets
+server/secrets.js
+
 # Floobits
 .floo
 .floobit

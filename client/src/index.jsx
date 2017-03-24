@@ -23,7 +23,6 @@ class App extends React.Component {
     }
   }
 
-
   //the Create style is for illustrative purposes
     //to pass in props:
     // <Route path="/Create" render={() => <Create {...this.state} /> } />

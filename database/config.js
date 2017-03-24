@@ -15,7 +15,7 @@ db.on('error', function(error) {
 })
 
 db.once('open', function(status) {
-	console.log('the connection to mongodb was successful');
+	console.log('the connection to mongodb was successful', dbUrl);
   User.populateTestData();
   Analysis.populateTestData(sampledata[0]);
   Analysis.populateTestData(sampledata[1]);
