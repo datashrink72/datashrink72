@@ -44,14 +44,14 @@ class LoginForm extends React.Component {
       <form onSubmit={this.sendForm}>
         <label>
           Username:
-          <input type="text" name='username' onChange={this.updateFormValue} defaultValue=''/>
         </label>
+        <input type="text" name='username' onChange={this.updateFormValue} defaultValue=''/>
         <label>
           Password:
-          <input type="password" name='password' onChange={this.updateFormValue} defaultValue=''
-          />
         </label>
-        <input type="submit" defaultValue ='submit' />
+          <input type="text" name='password' onChange={this.updateFormValue} defaultValue=''
+          />
+        <input id="button" type="submit" defaultValue ='submit' />
       </form>
       </div>
     )
