@@ -9,7 +9,7 @@ class SignUpForm extends React.Component {
       username: '',
       password: '',
       email: '',
-      status: ''
+      status: false
     }
 
     this.updateFormValue = this.updateFormValue.bind(this);
@@ -24,15 +24,9 @@ class SignUpForm extends React.Component {
 
   sendForm(event) {
     event.preventDefault()
-    console.log(this.state)
     s.serverPost('signup', this.state).then(e => {
-      //if successful send back message results to app
-      this.setState({status: e.data});
-      this.render();
-      console.log(e, 'yo');
+      this.props.update(this.state.username);
     }).catch(e => {
-      this.setState({status: e.data});
-      this.render();
       console.log(e);
       //tell user the info is correct or server is down
     })
@@ -63,7 +57,6 @@ class SignUpForm extends React.Component {
     )
   }
 }
-
 
 export default SignUpForm
 
