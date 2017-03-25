@@ -19,9 +19,21 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: 'guest',  //should be changed to username when logged in
+      user: 'Guest', 
       loggedIn: false,
     }
+    this.updateLoggedIn = this.updateLoggedIn.bind(this);
+  }
+
+  //the Create style is for illustrative purposes
+    //to pass in props:
+    // <Route path="/Create" render={() => <Create {...this.state} /> } />
+  updateLoggedIn(username) {
+    username = username || 'Guest';
+    this.setState({
+      user: username,
+      loggedIn: !this.state.loggedIn
+    });
   }
 
   render () {
@@ -37,8 +49,9 @@ class App extends React.Component {
               <div id="navbar" className="navbar-collaspe">
                 <ul className="nav navbar-nav">
                   <li><Link to="/Home">Home</Link></li>
-                  <li><Link to="/LoginForm">Log In</Link></li>
-                  <li><Link to="/SignUpForm">Sign Up</Link></li>
+                  {!this.state.loggedIn && <li><Link to="/LoginForm">Log In</Link></li> }
+                  {!this.state.loggedIn && <li><Link to="/SignUpForm">Sign Up</Link></li> }
+                  {this.state.loggedIn && <li><a href='\logout'>Logout</a></li> }
                   <li><Link to="/Create">Create Analysis</Link></li>
                   <li><Link to="/Public">Public Analyses</Link></li>
                   <li><Link to="/UserAnalyses">My Stored Analyses</Link></li>
@@ -55,8 +68,8 @@ class App extends React.Component {
             <h1>datashrink</h1>
             Welcome, {this.state.user}
             <Route path="/Home" />
-            <Route path="/LoginForm" component={LoginForm} />
-            <Route path="/SignUpForm" component={SignupForm}/>
+            {!this.state.loggedIn && <Route path="/LoginForm" component={() => <LoginForm update={this.updateLoggedIn} />} />}
+            {!this.state.loggedIn && <Route path="/SignUpForm" component={() => <SignupForm update={this.updateLoggedIn} />} />}
             <Route path="/Create" render={() => <Create {...this.state} /> } />
             <Route path="/Public" component={Public}/>          
             <Route path="/UserAnalyses" component={UserAnalyses}/>

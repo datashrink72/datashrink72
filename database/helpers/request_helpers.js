@@ -35,7 +35,6 @@ module.exports = {
 								}
 								res.cookie('session', newSession.user_id);
 								sessions[username] = newSession;
-								console.log('SESSIONS login: ', sessions);								
 								res.send('you are successfully logged in');
 							}
 						})
@@ -83,7 +82,6 @@ module.exports = {
 									}
 									res.cookie('session', newSession.user_id);
 									sessions[username] = newSession;
-									console.log('SESSIONS signup: ', sessions);
 									res.send('account created');
 								}
 							});
