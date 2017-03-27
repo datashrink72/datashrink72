@@ -557,7 +557,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 var _prodInvariant = __webpack_require__(3);
 
-var DOMProperty = __webpack_require__(17);
+var DOMProperty = __webpack_require__(18);
 var ReactDOMComponentFlags = __webpack_require__(85);
 
 var invariant = __webpack_require__(1);
@@ -2124,6 +2124,57 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.analysesGet = exports.serverGet = exports.serverPost = exports.customGet = undefined;
+
+var _axios = __webpack_require__(112);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var routes = {
+    login: '/login',
+    signup: '/signup',
+    public: '/publicanalyses',
+    customform: '/analysis',
+    twitter: '/twitter',
+    twitterProfile: '/analysis',
+    analyze: '/analyze/',
+    user: '/useranalyses',
+    session: '/hasSession'
+};
+
+var serverPost = function serverPost(routeName, message) {
+    return _axios2.default.post(routes[routeName], message);
+};
+
+var analysesGet = function analysesGet(id) {
+    return _axios2.default.get(routes['analyze'] + id);
+};
+
+var customGet = function customGet(routeName) {
+    return _axios2.default.get(routeName);
+};
+
+var serverGet = function serverGet(routeName) {
+    return _axios2.default.get(routes[routeName]);
+};
+
+exports.customGet = customGet;
+exports.serverPost = serverPost;
+exports.serverGet = serverGet;
+exports.analysesGet = analysesGet;
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -2334,57 +2385,6 @@ var DOMProperty = {
 
 module.exports = DOMProperty;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.analysesGet = exports.serverGet = exports.serverPost = exports.customGet = undefined;
-
-var _axios = __webpack_require__(112);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var routes = {
-    login: '/login',
-    signup: '/signup',
-    public: '/publicanalyses',
-    customform: '/analysis',
-    twitter: '/twitter',
-    twitterProfile: '/analysis',
-    analyze: '/analyze/',
-    user: '/useranalyses',
-    session: '/hasSession'
-};
-
-var serverPost = function serverPost(routeName, message) {
-    return _axios2.default.post(routes[routeName], message);
-};
-
-var analysesGet = function analysesGet(id) {
-    return _axios2.default.get(routes['analyze'] + id);
-};
-
-var customGet = function customGet(routeName) {
-    return _axios2.default.get(routeName);
-};
-
-var serverGet = function serverGet(routeName) {
-    return _axios2.default.get(routes[routeName]);
-};
-
-exports.customGet = customGet;
-exports.serverPost = serverPost;
-exports.serverGet = serverGet;
-exports.analysesGet = analysesGet;
 
 /***/ }),
 /* 19 */
@@ -24793,7 +24793,7 @@ var _reactDom = __webpack_require__(12);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _serverCalls = __webpack_require__(18);
+var _serverCalls = __webpack_require__(17);
 
 var s = _interopRequireWildcard(_serverCalls);
 
@@ -24899,7 +24899,7 @@ var _reactDom = __webpack_require__(12);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _serverCalls = __webpack_require__(18);
+var _serverCalls = __webpack_require__(17);
 
 var s = _interopRequireWildcard(_serverCalls);
 
@@ -25847,7 +25847,7 @@ module.exports = PooledClass.addPoolingTo(CallbackQueue);
 
 
 
-var DOMProperty = __webpack_require__(17);
+var DOMProperty = __webpack_require__(18);
 var ReactDOMComponentTree = __webpack_require__(6);
 var ReactInstrumentation = __webpack_require__(10);
 
@@ -26587,7 +26587,7 @@ module.exports = ReactInputSelection;
 var _prodInvariant = __webpack_require__(3);
 
 var DOMLazyTree = __webpack_require__(24);
-var DOMProperty = __webpack_require__(17);
+var DOMProperty = __webpack_require__(18);
 var React = __webpack_require__(26);
 var ReactBrowserEventEmitter = __webpack_require__(36);
 var ReactCurrentOwner = __webpack_require__(15);
@@ -28364,7 +28364,7 @@ var _reactDom = __webpack_require__(12);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _serverCalls = __webpack_require__(18);
+var _serverCalls = __webpack_require__(17);
 
 var s = _interopRequireWildcard(_serverCalls);
 
@@ -28595,7 +28595,7 @@ var _reactDom = __webpack_require__(12);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _serverCalls = __webpack_require__(18);
+var _serverCalls = __webpack_require__(17);
 
 var s = _interopRequireWildcard(_serverCalls);
 
@@ -28714,7 +28714,7 @@ var _reactDom = __webpack_require__(12);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _serverCalls = __webpack_require__(18);
+var _serverCalls = __webpack_require__(17);
 
 var s = _interopRequireWildcard(_serverCalls);
 
@@ -40004,7 +40004,7 @@ var _reactDom = __webpack_require__(12);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _serverCalls = __webpack_require__(18);
+var _serverCalls = __webpack_require__(17);
 
 var s = _interopRequireWildcard(_serverCalls);
 
@@ -40115,7 +40115,7 @@ var _reactDom = __webpack_require__(12);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _serverCalls = __webpack_require__(18);
+var _serverCalls = __webpack_require__(17);
 
 var s = _interopRequireWildcard(_serverCalls);
 
@@ -43459,7 +43459,7 @@ module.exports = FallbackCompositionState;
 
 
 
-var DOMProperty = __webpack_require__(17);
+var DOMProperty = __webpack_require__(18);
 
 var MUST_USE_PROPERTY = DOMProperty.injection.MUST_USE_PROPERTY;
 var HAS_BOOLEAN_VALUE = DOMProperty.injection.HAS_BOOLEAN_VALUE;
@@ -44905,7 +44905,7 @@ var AutoFocusUtils = __webpack_require__(155);
 var CSSPropertyOperations = __webpack_require__(157);
 var DOMLazyTree = __webpack_require__(24);
 var DOMNamespaces = __webpack_require__(47);
-var DOMProperty = __webpack_require__(17);
+var DOMProperty = __webpack_require__(18);
 var DOMPropertyOperations = __webpack_require__(84);
 var EventPluginHub = __webpack_require__(29);
 var EventPluginRegistry = __webpack_require__(35);
@@ -46354,7 +46354,7 @@ module.exports = ReactDOMInput;
 
 
 
-var DOMProperty = __webpack_require__(17);
+var DOMProperty = __webpack_require__(18);
 var ReactComponentTreeHook = __webpack_require__(8);
 
 var warning = __webpack_require__(2);
@@ -47326,7 +47326,7 @@ module.exports = {
 
 
 
-var DOMProperty = __webpack_require__(17);
+var DOMProperty = __webpack_require__(18);
 var EventPluginRegistry = __webpack_require__(35);
 var ReactComponentTreeHook = __webpack_require__(8);
 
@@ -48237,7 +48237,7 @@ module.exports = ReactHostOperationHistoryHook;
 
 
 
-var DOMProperty = __webpack_require__(17);
+var DOMProperty = __webpack_require__(18);
 var EventPluginHub = __webpack_require__(29);
 var EventPluginUtils = __webpack_require__(48);
 var ReactComponentEnvironment = __webpack_require__(51);
@@ -54994,7 +54994,7 @@ var _UserAnalyses = __webpack_require__(71);
 
 var _UserAnalyses2 = _interopRequireDefault(_UserAnalyses);
 
-var _serverCalls = __webpack_require__(18);
+var _serverCalls = __webpack_require__(17);
 
 var s = _interopRequireWildcard(_serverCalls);
 
@@ -55157,7 +55157,7 @@ var App = function (_React$Component) {
                   { className: 'credit-photos' },
                   'powered by:',
                   _react2.default.createElement('img', { id: 'footer-images', src: "/images/IBM-Watson-image.png" }),
-                  _react2.default.createElement('img', { id: 'footer-images', src: "/images/twitter_bird_logo_2012.svg.png" })
+                  _react2.default.createElement('img', { id: 'footer-images', src: "/images/twitterLogo.png" })
                 )
               )
             )
