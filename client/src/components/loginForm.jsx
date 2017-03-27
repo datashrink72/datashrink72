@@ -8,7 +8,9 @@ class LoginForm extends React.Component {
     this.state = { 
       username: '',
       password: '',
-      status: false
+      status: false,
+      error: false,
+      errorMessage: ''
     }
 
     this.updateFormValue = this.updateFormValue.bind(this);
@@ -23,16 +25,21 @@ class LoginForm extends React.Component {
   sendForm(event) {
     event.preventDefault()
     s.serverPost('login', this.state).then(e => {
-      console.log('E in sendForm in loginForm: ', e);
-      if (e.data) {
-        this.props.update(e.data);
-      } // TODO: tell the user their login failed (when e.data === false)
-    }).catch(e => {
-      this.setState({status: e.data});
-      this.props.update(this.state.username);
+      if (e.data.username) {
+        this.props.update(e.data.username);
+      }
+      if (e.data.error) {
+        this.setState({
+          error: true,
+          errorMessage: e.data.error
+        });
+      }
     }).catch(e => {
       console.log(e);
-      //tell user the info is correct or server is down
+      this.setState({
+        error: true,
+        errorMessage: 'There was a server error. Please wait and try again.'
+      })
     })
   }
 
@@ -40,6 +47,7 @@ class LoginForm extends React.Component {
     return (
       <div>
       <h2>Log In</h2>
+      <p>{this.state.error && this.state.errorMessage}</p>
         <form onSubmit={this.sendForm}>
           <label>
             Username:

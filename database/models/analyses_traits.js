@@ -35,7 +35,6 @@ AnalysisTrait.populateTestData = function(sampledata) {
             });
             newTrait.save(function(err, newTrait) {
               if (err) { console.error(err); }
-              // console.log('saving trait', newTrait)
             });
           }
         }

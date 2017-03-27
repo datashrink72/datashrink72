@@ -1,12 +1,12 @@
 var passport = require('passport');
 var Strategy = require('passport-twitter').Strategy;
 var Twitter = require('twitter');
-// var API = require('./API_KEYS.js');
+var API = require('./API_KEYS.js');
 
-var API = {
-  twitterKey: process.env.S1_KEY,
-  twitterSecret: process.env.S1_SECRET
-}
+// var API = {
+//   twitterKey: process.env.S1_KEY,
+//   twitterSecret: process.env.S1_SECRET
+// }
 
 var client = new Twitter({
   consumer_key: API.twitterKey,
@@ -73,17 +73,6 @@ var testAnalysis = (req, res) => {
     res.send(JSON.stringify(tweets));
   }, user);
 }
-
-//TODO: 
-// Configure Passport authenticated session persistence.
-//
-// In order to restore authentication state across HTTP requests, Passport needs
-// to serialize users into and deserialize users out of the session.  In a
-// production-quality application, this would typically be as simple as
-// supplying the user ID when serializing, and querying the user record by ID
-// from the database when deserializing.  However, due to the fact that this
-// example does not have a database, the complete Facebook profile is serialized
-// and deserialized.
 
 passport.serializeUser(function(user, cb) {
   cb(null, user);

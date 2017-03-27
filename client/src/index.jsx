@@ -32,7 +32,6 @@ class App extends React.Component {
 
   componentWillMount() {
     s.serverGet('session').then((e) => {
-      console.log(e.data);
       if (e.data.username) {
         this.setState({
           user: e.data.username,

@@ -120,7 +120,6 @@ d3BubbleChart.create = function(el, dataOrig, explanations) {
       .enter()
       .append('g')
       .attr('transform', function(d, i) {
-        console.log(i);
         return `translate(1100, ${i * 15 + 35})`;
       });
     legend

@@ -9,8 +9,8 @@ var tw = require('./social/twitter.js');
 var db = require('../database/config');
 var dbHelpers = require('../database/helpers/request_helpers');
 var path = require('path')
-//-------------------------------------------------------------//
 var secret = require('./secrets');
+//-------------------------------------------------------------//
 
 var app = express();
 
@@ -26,8 +26,6 @@ app.use(expressSession({secret: secret, resave: true, saveUnitialized: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
 /**********************/
 /**** SOCIAL MEDIA ****/
 /**********************/
@@ -35,13 +33,7 @@ app.use(passport.session());
 app.get('/twitter', tw.toAuth);
 app.get('/twitter/return', tw.fromAuth, tw.toAnalysis, 
   watsonHelpers.analyzeProfile);
-// //TODO change render test to analysis
-app.get('/twitterProfile', ensureLogIn, tw.renderTest);
 app.get('/twitterProfile/*', tw.testAnalysis);
-// app.get('/twitterProfile', ensureLogIn, tw.toAnalysis);
-// app.post('/twitterProfile', function(req, res) {
-//   console.log(req.body.username);
-// });
 
 /****************/
 /**** WATSON ****/
