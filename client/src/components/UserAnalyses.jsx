@@ -26,8 +26,8 @@ class UserAnalyses extends React.Component {
   render () {
     return (
       <div>
-        {!this.state.dataLoaded ? <div>Please sign up or log in to see saved analyses.</div> :
-          <div>
+        {!this.state.dataLoaded ? <div>Please sign up or log in to see saved analyses</div> :
+          <div className="link-list">
           {this.state.data.length === 0 ? <div>You have no saved analyses.</div> : 
             this.state.data.map(e => {
               return this.props.click ? 

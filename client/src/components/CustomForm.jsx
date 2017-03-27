@@ -42,15 +42,15 @@ class CustomForm extends React.Component {
     return (
       <div>
       <h2>Enter your own input to analyze</h2>
-      <form onSubmit={(e) => this.props.click === undefined ? this.sendForm(e) : this.props.click(e, this.state)}>
+      <form className="custom" onSubmit={(e) => this.props.click === undefined ? this.sendForm(e) : this.props.click(e, this.state)}>
         <label>
           Name your input
           <p></p>
           <input type="text" name='name' onChange={this.updateFormValue} defaultValue=''/>          
           <p></p>
         </label>
-        <textarea rows='30' cols='60' name='text' onChange={this.updateFormValue} defaultValue=''/>
-        <input type="submit" defaultValue ='submit'/>
+        <textarea rows='30' cols='60' name='text' className="custom-form" onChange={this.updateFormValue} defaultValue=''/>
+        <input type="submit" className="submit" defaultValue ='submit'/>
       </form>
       </div>
     )

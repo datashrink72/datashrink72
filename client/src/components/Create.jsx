@@ -11,16 +11,16 @@ import {
 var Create = function(props) {
  return (
   <Router>
-    <div>
+    <div className="link-list">
     {!props.ownTwitter ? null : 
       <div>
-        <a href="\twitter">My Twitter Account</a> 
+        <a href="\twitter"><img className="list-pic" src={"/images/you.jpg"} />My Twitter Account</a> 
         <br />
       </div>
     }
-    <Link to="/TwitterSearch">Public Twitter Account</Link>
+    <Link to="/TwitterSearch"><img className="list-pic" src={"/images/anyone.png"} />Public Twitter Account</Link>
     <br />
-    <Link to="/CustomForm">Custom Input</Link>
+    <Link to="/CustomForm"><img className="list-pic" src={"/images/whatever.jpg"} />Custom Input</Link>
     <Route path="/TwitterSearch" component={() => <TwitterSearch click={props.otherTwitterClick}/>} />
     <Route path="/CustomForm" component={() => <CustomForm click={props.customClick} /> }/>
     </div>

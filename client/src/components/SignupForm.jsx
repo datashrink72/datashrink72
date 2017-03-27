@@ -51,7 +51,7 @@ class SignUpForm extends React.Component {
           Email:
           <input type="text" name='email' onChange={this.updateFormValue} defaultValue=''/>
         </label>
-        <input type="submit" defaultValue ='submit' />
+        <input type="submit" className="submit" defaultValue ='submit' />
       </form>
       </div>
     )

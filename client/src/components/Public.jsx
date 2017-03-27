@@ -26,7 +26,7 @@ class Public extends React.Component {
     return (
       <div>
         {!this.state.dataLoaded ? null :
-          <div>
+          <div className="link-list">
             {this.state.data.map(e => {
               return this.props.click ? 
                 (<div key={e._id}><a name={e._id} href="#" onClick={this.props.click} >{e.person}</a></div>) :

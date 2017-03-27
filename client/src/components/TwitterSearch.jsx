@@ -39,7 +39,7 @@ class TwitterSearch extends React.Component {
           Analyze tweets from: 
           <input type='text' name='name' onChange={this.updateFormValue} defaultValue='@'/>
         </label>
-        <input type="submit" defaultValue ='submit'/>
+        <input className="submit" type="submit" defaultValue ='submit'/>
       </form>
       </div>
     )

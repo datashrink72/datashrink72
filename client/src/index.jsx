@@ -78,9 +78,10 @@ class App extends React.Component {
               </div>
             </div>
           </nav>
+          <img id="datashrink" src={"/images/datashrink_360.jpg"} />
           <div className="container">
             <h1>datashrink</h1>
-            Welcome, {this.state.user}
+            <p className="welcome">Welcome, {this.state.user}</p>
             <Route path="/Home" />
             {!this.state.loggedIn && <Route path="/LoginForm" component={() => <LoginForm update={this.updateLoggedIn} />} />}
             {!this.state.loggedIn && <Route path="/SignUpForm" component={() => <SignupForm update={this.updateLoggedIn} />} />}

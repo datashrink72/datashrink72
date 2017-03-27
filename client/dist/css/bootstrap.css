@@ -6786,13 +6786,49 @@ input {
   border: solid 1px #bbbcbf;
 }
 
-input [text] {
-  width: 80%;
+.submit {
+  background-color: #0557fc;
+  color: white;
 }
-
 
 label {
   display: block;
   text-align: center;
+}
+
+.welcome {
+  margin-bottom: 10px;
+}
+
+.list-pic {
+  height: 20px;
+  width: 23px;
+}
+
+.link-list {
+  line-height: 200%;
+}
+
+.custom {
+  width: 500px;
+  display: block;
+}
+
+.custom-form {
+  display: block;
+  margin: auto;
+  max-height: 150px;
+}
+
+.chart {
+  margin: 25px 0 0 -55px;
+}
+
+#datashrink {
+  width: 150px;
+  height: auto;
+  position: absolute;
+  top: 70px;
+  right: 100px;
 }
 

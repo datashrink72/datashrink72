@@ -50,7 +50,7 @@ class LoginForm extends React.Component {
             <input type="password" name='password' refs='password' onChange={this.updateFormValue} defaultValue=''
             />
           </label>
-          <input type="submit" defaultValue ='submit' />
+          <input type="submit" className="submit" defaultValue ='submit' />
         </form>
       </div>
     );
