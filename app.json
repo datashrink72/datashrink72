@@ -1,7 +1,6 @@
 {
   "name": "datashrink72",
   "scripts": { 
-    "postdeploy": "npm start"
   },
   "env": {
     "DB_URL": {
@@ -11,6 +10,12 @@
       "required": true
     },
     "S1_SECRET": {
+      "required": true
+    },
+    "P_I_PASSWORD": {
+      "required": true
+    },
+    "P_I_USERNAME": {
       "required": true
     }
   },

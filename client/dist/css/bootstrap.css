@@ -6764,9 +6764,9 @@ button.close {
 }
 
 .credit-photos {
-  position: fixed;
-  color: white;
+  position: relative;
   top: 15px;
+  color: white;
   width: 100%;
 }
 
