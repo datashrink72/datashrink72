@@ -8,6 +8,8 @@ import ComparisonChart from './components/ComparisonChart.jsx'
 import Analyses from './components/Analyses.jsx'
 import Public from './components/Public.jsx'
 import UserAnalyses from './components/UserAnalyses.jsx'
+import TwitterSearch from './components/TwitterSearch.jsx'
+import CustomForm from './components/CustomForm.jsx'
 import * as s from './serverCalls.js'
 
 import {
@@ -58,23 +60,34 @@ class App extends React.Component {
           <nav className="navbar navbar-inverse navbar-fixed-top">
             <div className="container">
               <div className="navbar-header">
-                <a className="navbar-brand" href="#">datashrink</a>
+                <Link to="/Home" className="navbar-brand" >datashrink</Link>
               </div>
               <div id="navbar" className="navbar-collaspe">
                 <ul className="nav navbar-nav">
-                  <li><Link to="/Home">Home</Link></li>
-                  {!this.state.loggedIn && <li><Link to="/LoginForm">Log In</Link></li> }
-                  {!this.state.loggedIn && <li><Link to="/SignUpForm">Sign Up</Link></li> }
-                  {this.state.loggedIn && <li><a href='\logout'>Logout</a></li> }
-                  <li><Link to="/Create">Create Analysis</Link></li>
-                  <li><Link to="/Public">Public Analyses</Link></li>
-                  <li><Link to="/User">My Stored Analyses</Link></li>
+                  <li className="dropdown">
+                  <a href="#" className="dropdown-toggle" data-toggle="dropdown" 
+                    role="button" aria-haspopup="true" aria-expanded="false">new analysis 
+                      <span className="caret"></span>
+                  </a>
+                    <ul className="dropdown-menu">
+                      <li><a href="\twitter">my twitter</a></li>
+                      <li><Link to="/TwitterSearch">public twitter</Link></li>
+                      <li><Link to="/CustomForm">custom text</Link></li>
+                    </ul> 
+                  </li>
+                  <li><Link to="/User">saved analyses</Link></li>
+                  <li><Link to="/Public">browse analyses</Link></li>
                 </ul>
-                <div className="credit-photos">
+                <ul className="nav navbar-nav navbar-right">
+                  {!this.state.loggedIn && <li><Link to="/LoginForm">log in</Link></li> }
+                  {!this.state.loggedIn && <li><Link to="/SignUpForm">sign up</Link></li> }
+                  {this.state.loggedIn && <li><a href='\logout'>logout</a></li> }
+                <li><div className="credit-photos">
                   powered by: 
                   <img id="footer-images" src={"/images/IBM-Watson-image.png"} />
                   <img id="footer-images" src={"/images/twitter_bird_logo_2012.svg.png"} />
-                </div>
+                </div></li>
+                </ul>
               </div>
             </div>
           </nav>
@@ -85,7 +98,8 @@ class App extends React.Component {
             <Route path="/Home" />
             {!this.state.loggedIn && <Route path="/LoginForm" component={() => <LoginForm update={this.updateLoggedIn} />} />}
             {!this.state.loggedIn && <Route path="/SignUpForm" component={() => <SignupForm update={this.updateLoggedIn} />} />}
-            <Route path="/Create" render={() => <Create ownTwitter={true} {...this.state} /> } />
+            <Route path="/TwitterSearch" component={TwitterSearch} />
+            <Route path="/CustomForm" component={CustomForm}/>
             <Route path="/Public" component={Public}/>          
             <Route path="/User" component={UserAnalyses}/>
             <Route path="/analyses/:id" component={Analyses} />
