@@ -16,18 +16,33 @@ var client = new Twitter({
  access_token_secret: API.access_token_secret
 });
 
-passport.use('twitter-authz', new TwitterStrategy({
-    consumerKey: API.twitterKey,
-    consumerSecret: API.twitterSecret,
-    callbackURL: '/twitter/return',
-  },
-  function(token, tokenSecret, profile, cb) {
-    client = populateClient(token, tokenSecret, profile.username);
-    analyzeProfile(console.log);
+if (process.env.NODE_ENV === 'production') {
+  passport.use('twitter-authz', new TwitterStrategy({
+      consumerKey: API.twitterKey,
+      consumerSecret: API.twitterSecret,
+      callbackURL: 'https://hella-amazing-ccccc.herokuapp.com/twitter/return'
+    },
+    function(token, tokenSecret, profile, cb) {
+      client = populateClient(token, tokenSecret, profile.username);
+      analyzeProfile(console.log);
 
-    return cb(null, profile);
-  })
-);
+      return cb(null, profile);
+    })
+  );
+} else {
+  passport.use('twitter-authz', new TwitterStrategy({
+      consumerKey: API.twitterKey,
+      consumerSecret: API.twitterSecret,
+      callbackURL: 'http://localhost:3000/twitter/return'
+    },
+    function(token, tokenSecret, profile, cb) {
+      client = populateClient(token, tokenSecret, profile.username);
+      analyzeProfile(console.log);
+
+      return cb(null, profile);
+    })
+  );
+}
 
 passport.serializeUser(function(user, cb) {
   cb(null, user);
