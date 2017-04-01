@@ -135,11 +135,7 @@ var attachUsername = function(req, res, next) {
 }
 
 var checkIfSelfAnalysis = function(req, res, next) {
-  if (!req.params.username) {
-    res.redirect(301, '/selfTwitterAnalysis');
-  } else {
-    next();
-  }
+  req.params.username ? next() : res.redirect(301, '/selfTwitterAnalysis');
 }
 
 module.exports = {
