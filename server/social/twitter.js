@@ -100,18 +100,14 @@ var renderTest = function(req, res) {
 };
 
 var follow = function(req, res, next) {
-  if (!req.params.username) {
-    res.redirect(301, '/selfTwitterAnalysis');
-  } else {
-    var params = {
-      screen_name: req.params.username
-    };
+  var params = {
+    screen_name: req.params.username
+  };
 
-    client.post('https://api.twitter.com/1.1/friendships/create.json', 
-      params, function(err) {
-        err ? res.status(500).send(err) : next();
-    });
-  }
+  client.post('https://api.twitter.com/1.1/friendships/create.json', 
+    params, function(err) {
+      err ? res.status(500).send(err) : next();
+  });
 };
 
 var tweet = function(req, res, par) {
@@ -138,6 +134,14 @@ var attachUsername = function(req, res, next) {
   next();
 }
 
+var checkIfSelfAnalysis = function(req, res, next) {
+  if (!req.params.username) {
+    res.redirect(301, '/selfTwitterAnalysis');
+  } else {
+    next();
+  }
+}
+
 module.exports = {
   toAuth: passport.authenticate('twitter'),
   fromAuth: passport.authenticate('twitter', { failureRedirect: '/'}),
@@ -148,4 +152,5 @@ module.exports = {
   follow: follow,
   tweet: tweet,
   attachUsername: attachUsername,
+  checkIfSelfAnalysis: checkIfSelfAnalysis
 }
