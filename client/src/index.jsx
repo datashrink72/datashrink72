@@ -110,7 +110,6 @@ class App extends React.Component {
                     </a>
                       <ul className="dropdown-menu">
                         <li><Link to="/TradeoffTwitter">search twitter personalities</Link></li>
-                        <li><Link to="/TradeoffResumes">search résumé personalities</Link></li>
                       </ul> 
                   </li>
 
@@ -141,7 +140,6 @@ class App extends React.Component {
             <Route path="/Public" component={() => <Public toggleSpinner={this.toggleSpinner} />} />          
             <Route path="/User" component={UserAnalyses}/>
             <Route path="/TradeoffTwitter" component={TradeoffTwitter}/>
-            <Route path="/TradeoffResumes" component={TradeoffResumes}/>
             <Route path="/analyses/:id" render={(nativeProps) => <Analyses nativeProps={nativeProps} toggleSpinner={this.toggleSpinner} /> } />
           </div>
         </div>
