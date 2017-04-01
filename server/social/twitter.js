@@ -139,8 +139,8 @@ var checkIfSelfAnalysis = function(req, res, next) {
 }
 
 module.exports = {
-  toAuth: passport.authenticate('twitter'),
-  fromAuth: passport.authenticate('twitter', { failureRedirect: '/'}),
+  toAuth: passport.authorize('twitter'),
+  fromAuth: passport.authorize('twitter', { failureRedirect: '/'}),
   analyzeProfile: analyzeProfile,
   testAnalysis: testAnalysis,
   toAnalysis: toAnalysis,
